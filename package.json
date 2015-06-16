@@ -1,8 +1,9 @@
 {
   "name": "starlet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "starlet.js",
+  "bin": {"starlet": "./bin/starlet"},
   "dependencies": {
     "bower": "~1.4.1",
     "uglify-js": "~2.4.23",
@@ -14,6 +15,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": "https://github.com/starletjs/starletjs",
   "author": "Starlet.js contributors",
   "license": "MIT"
 }

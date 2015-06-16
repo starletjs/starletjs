@@ -1,10 +1,29 @@
+#!/usr/bin/env node
+
 var fs = require("fs");
 var path = require("path");
 var _ = require("lodash");
 var UglifyJS = require("uglify-js");
 var mustache = require("mustache");
 
-var netscapeBookmarkFileTemplate = fs.readFileSync('./bookmark.html.mustache').toString();
+var netscapeBookmarkFileTemplate = [
+  '<!DOCTYPE NETSCAPE-Bookmark-file-1>',
+  '<!-- This is an automatically generated file.',
+  '     It will be read and overwritten.',
+  '     DO NOT EDIT! -->',
+  '<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">',
+  '<TITLE>Bookmarks</TITLE>',
+  '<H1>Bookmarks</H1>',
+  '',
+  '<DL><p>',
+  '  <DT><H3>Bookmarklets</H3></DT>',
+  '  <DL><p>',
+  '    {{#bookmarklets}}',
+  '      <DT><A HREF="{{uglifiedCode}}">{{name}}</A></DT>',
+  '    {{/bookmarklets}}',
+  '  </DL>',
+  '</DL>'
+].join("\n");
 //var prettyWebPageFileTemplate = fs.readFileSync('./pretty_bookmark.html.mustache').toString();
 
 function BookmarkletPresenter(filename, fileContents){
